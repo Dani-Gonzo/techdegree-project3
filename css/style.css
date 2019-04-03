@@ -36,9 +36,14 @@ a {
   Form Element Styles
 ==================================== */
 
+#cc-num, #zip {
+  margin-bottom: 1em;
+}
+
 form {
 	padding: .875em 1.875em 1.875em;
 	background: #85b5ca;
+	position: relative;
 }
 
 fieldset,
@@ -50,7 +55,6 @@ button {
 
 fieldset {
 	margin-top: 1.5em;
-	position: relative;
 }
 
 legend,
@@ -74,7 +78,7 @@ legend {
 label {
 	color: #000;
 	display: block;
-	margin-bottom: .5em;
+  margin-bottom: .5em;
 }
 
 input,
@@ -114,17 +118,6 @@ button:hover {
 	background: #184c62;
 }
 
-/* .name-tip, .email-tip {
-	position: relative;
-	background: red;
-	color: white;
-	font-weight: bold;
-	border-radius: .4em;
-	margin-bottom: 10px;
-	padding: 10px;
-	text-align: center;
-} */
-
 .name-tip {
 	border-radius: 5px;
     display: none;
@@ -132,8 +125,8 @@ button:hover {
     text-align: center;
     position: absolute;
     background: rgb(170, 41, 41);
-    left: 103%;
-    top: 84px;
+    left: 98%;
+    top: 120px;
     width: 190px;
     padding: 7px 10px;
     color: #fff;
@@ -146,14 +139,84 @@ button:hover {
     text-align: center;
     position: absolute;
     background: rgb(170, 41, 41);
-    left: 103%;
-    top: 165px;
+    left: 98%;
+    top: 208px;
     width: 190px;
     padding: 7px 10px;
     color: #fff;
 }
 
-.name-tip:after, .email-tip:after {
+.activities-tip {
+	border-radius: 5px;
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    background: rgb(170, 41, 41);
+    left: 40%;
+    top: 515px;
+    width: 190px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+.cc-tip-blank {
+	border-radius: 5px;
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    background: rgb(170, 41, 41);
+    left: 4.8%;
+    top: 1130px;
+    width: 300px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+.cc-tip-invalid {
+	border-radius: 5px;
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    background: rgb(170, 41, 41);
+    left: 4.8%;
+    top: 1130px;
+    width: 300px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+.zip-tip {
+	border-radius: 5px;
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    background: rgb(170, 41, 41);
+    left: 52%;
+    top: 1130px;
+    width: 130px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+.cvv-tip {
+	border-radius: 5px;
+    display: none;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    background: rgb(170, 41, 41);
+    left: 75%;
+    top: 1130px;
+    width: 130px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+.name-tip:after, .email-tip:after, .activities-tip:after {
 	right: 100%;
     top: 50%;
     border: solid transparent;
@@ -165,7 +228,21 @@ button:hover {
     border-color: rgba(136, 183, 213, 0);
     border-right-color: rgb(170, 41, 41);
     border-width: 8px;
-    margin-top: -8px;
+    margin-top: -10px;
+}
+
+.cc-tip-blank:after, .cc-tip-invalid:after, .zip-tip:after, .cvv-tip:after {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom-color: rgb(170, 41, 41);
+	border-top: 0;
+	margin-left: -20px;
+	margin-top: -10px;
 }
 
 
