@@ -204,6 +204,13 @@ function ValidateCC(targetElement) {
         tip = targetElement.nextElementSibling;
         ShowHideToolTip(false, targetElement.nextElementSibling.nextElementSibling, targetElement);
     }
+    // If "Other Job Role" input box is displayed, shift CC info tooltips
+    if ($("#title").val() == "other") {
+        CCTipBlank.css("top", "1195px");
+        CCTipInvalid.css("top", "1195px");
+        zipTip.css("top", "1195px");
+        cvvTip.css("top", "1195px");
+    }
     ShowHideToolTip(show, tip, targetElement);
     // Return true or false if tip is shown or not
     return show;
