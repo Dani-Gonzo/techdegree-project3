@@ -70,7 +70,7 @@ function ValidNameCheck(name) {
 }
 
 function ValidEmailCheck(email) {
-    return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
+    return /^[^@]+@[^@.]+\.[a-z.]+$/i.test(email);
 }
 
 // Create credit card info validation
