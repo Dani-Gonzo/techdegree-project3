@@ -22,7 +22,7 @@ If no activities are selected and the user tries to submit the form, an error me
 
 Credit card payment option is selected by default. Different information will be displayed depending on what is selected from the payment dropdown.<br>
 Only when credit card is selected are the credit card information input fields checked for validity.<br>
-Credit card number input field displays tooltip as user begins typing. Error visuals disappear when the correct number of digits is entered.<br>
+Credit card number input field displays tooltip when field comes into focus. Error visuals disappear when the correct number of digits is entered.<br>
     Field will display different tooltip depending on if the field is blank or if the user has entered a number too long or too short.<br>
 Zip Code and CVV input boxes display tooltip as user begins typing. Error visuals disappear when correct number of digits are entered.
 
