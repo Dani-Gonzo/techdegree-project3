@@ -66,7 +66,7 @@ function DisableCheck(checkedActivity, activityToChange) {
 }
  // Input field validation checks
 function ValidNameCheck(name) {
-    return /^[a-z\s'-]+$/i.test(name);
+    return /^[^\s]+[a-z\s'-]+$/i.test(name);
 }
 
 function ValidEmailCheck(email) {
@@ -88,7 +88,7 @@ function ValidCVVCheck(cvvNum) {
 
 // Shows "other job" input box if "other" is selected
 $("#title").change(function(e) {
-    if ($(e.target).val() == "other") {
+    if ($(e.target).val() === "other") {
         $("#other-title").show();
     }
     else {
@@ -121,29 +121,29 @@ $(".activities input").change(function(e) {
 
     total.show();
 
-    if ($(e.target).prop("name") == "all") {
+    if ($(e.target).prop("name") === "all") {
         UpdateTotal("all", 200);
     }
-    else if ($(e.target).prop("name") == "js-frameworks") {
+    else if ($(e.target).prop("name") === "js-frameworks") {
         DisableCheck("js-frameworks", "express");
         UpdateTotal("js-frameworks", 100);
     }
-    else if ($(e.target).prop("name") == "js-libs") {
+    else if ($(e.target).prop("name") === "js-libs") {
         DisableCheck("js-libs", "node");
         UpdateTotal("js-libs", 100);
     }
-    else if ($(e.target).prop("name") == "express") {
+    else if ($(e.target).prop("name") === "express") {
         DisableCheck("express", "js-frameworks");
         UpdateTotal("express", 100);
     }
-    else if ($(e.target).prop("name") == "node") {
+    else if ($(e.target).prop("name") === "node") {
         DisableCheck("node", "js-libs");
         UpdateTotal("node", 100);
     }
-    else if ($(e.target).prop("name") == "build-tools") {
+    else if ($(e.target).prop("name") === "build-tools") {
         UpdateTotal("build-tools", 100);
     }
-    else if ($(e.target).prop("name") == "npm") {
+    else if ($(e.target).prop("name") === "npm") {
         UpdateTotal("npm", 100);
     }
 });
@@ -154,13 +154,13 @@ $("#payment").change(function(e) {
     paypal.hide();
     bitcoin.hide();
 
-    if ($(e.target).val() == "credit card") {
+    if ($(e.target).val() === "credit card") {
         credit.show();
     }
-    else if ($(e.target).val() == "paypal") {
+    else if ($(e.target).val() === "paypal") {
         paypal.show();
     }
-    else if ($(e.target).val() == "bitcoin") {
+    else if ($(e.target).val() === "bitcoin") {
         bitcoin.show();
     }
 });
@@ -195,7 +195,7 @@ function ValidateCC(targetElement) {
     const show = !valid;
     let tip = null;
     // If field is empty, show "Enter a number" tooltip
-    if (text == "") {
+    if (text === "") {
         tip = targetElement.nextElementSibling.nextElementSibling;
         ShowHideToolTip(false, targetElement.nextElementSibling, targetElement);
     }
@@ -205,7 +205,7 @@ function ValidateCC(targetElement) {
         ShowHideToolTip(false, targetElement.nextElementSibling.nextElementSibling, targetElement);
     }
     // If "Other Job Role" input box is displayed, shift CC info tooltips
-    if ($("#title").val() == "other") {
+    if ($("#title").val() === "other") {
         CCTipBlank.css("top", "1195px");
         CCTipInvalid.css("top", "1195px");
         zipTip.css("top", "1195px");
@@ -219,6 +219,7 @@ function ValidateCC(targetElement) {
 // Run validation checks on input fields as user types
 emailInput.on("input", e => { Validate(e.target, ValidEmailCheck) });
 zipInput.on("input", e => { Validate(e.target, ValidZipCheck) });
+ccInput.on("focus", e => { ValidateCC(e.target) });
 ccInput.on("input", e => { ValidateCC(e.target) });
 cvvInput.on("input", e => { Validate(e.target, ValidCVVCheck) });
 // Run validation check on name input when user focuses away from input field
@@ -235,7 +236,7 @@ $("form").on("submit", function(e) {
     const invalidCVVNum = Validate(cvvInput[0], ValidCVVCheck);
 
     // If paypal or bitcoin selected, only check name, email and activity fieldset
-    if ($("#payment").val() == "paypal" || $("#payment").val() == "bitcoin") {
+    if ($("#payment").val() === "paypal" || $("#payment").val() === "bitcoin") {
         // If field checks come back true, prevent form from being submitted
         if (invalidName || invalidEmail || activityUnchecked) {
             e.preventDefault();
@@ -253,7 +254,7 @@ $("form").on("submit", function(e) {
         }
     }
     // If credit card selected, check all necessary fields, including credit card information
-    else if ($("#payment").val() == "credit card") {
+    else if ($("#payment").val() === "credit card") {
         // If field checks come back true, prevent form from being submitted
         if (invalidName || invalidEmail || activityUnchecked || invalidCCNum || invalidZipNum || invalidCVVNum) {
             e.preventDefault();
